@@ -1,0 +1,313 @@
+package jpanel_kardinat;
+import java.awt.image.BufferedImage;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.Random;
+
+public class MyCanvas
+{
+	
+	static double noktalar[][]= {{1,2,5},{3,2,0},{4,2,0}};
+	  static double oteleme[][]= {{0,0,0},{0,0,0},{0,0,0}};
+	  static int nokta_say=noktalar.length;
+	  static double R=5;
+	  static double K=0;
+	  static double F=0.1;//öteleme katsayisi;!=0
+	  static int N=0;//itilen nokta;
+	  static int M=0;//iten nokta;
+	  static int i=0;
+	  static int ii=0;
+	  static long sayac=0;
+	  static long sayac_limit=500;
+	  
+	
+	
+    JLabel view;
+    BufferedImage surface;
+    Random random = new Random();
+    static int son_nokta_x0=0;
+    static int son_nokta_y0=0;
+    static int son_nokta_x1=0;
+    static int son_nokta_y1=0;
+    static int son_nokta_x2=0;
+    static int son_nokta_y2=0;
+    static int son_nokta_x3=0;
+    static int son_nokta_y3=0;
+    static int son_nokta_x4=0;
+    static int son_nokta_y4=0;
+    static int son_nokta_x5=0;
+    static int son_nokta_y5=0;
+    static int son_nokta_x6=0;
+    static int son_nokta_y6=0;
+    static int son_nokta_x7=0;
+    static int son_nokta_y7=0;
+    static int son_nokta_x8=0;
+    static int son_nokta_y8=0;
+
+    public MyCanvas()
+    {
+        surface = new BufferedImage(400,400,BufferedImage.TYPE_INT_RGB);
+        view = new JLabel(new ImageIcon(surface));
+        Graphics g = surface.getGraphics();
+        
+        
+        g.setColor(Color.ORANGE);
+        g.fillRect(0,0,400,400);
+        g.setColor(Color.BLACK);
+        // Keep this until I figured out if it's painted on load or not.
+        g.dispose();
+        drawArc(0,0,g,1);
+        ActionListener listener = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                addNewElement();
+            }
+        };
+        Timer timer = new Timer(50, listener);
+        timer.start();
+    }
+
+    public void addNewElement() {
+    	Graphics g = surface.getGraphics();    	
+    	  
+    	  
+    	  
+    	  
+    		
+    		  
+    	  kordinatları_yaz();
+    	  oteleme_degerleri();
+    	  otelemeri_ekle();
+    	  noktalar[0][0]=0;	  noktalar[0][1]=0;	  noktalar[0][2]=R;//bir tane çubuk sabit dursun ki şekil güzelleşssin
+    	  yarıcapa_kucult();
+    	  sayac++;
+    	  
+    	  
+    	  
+         
+         
+
+    if(noktalar.length>=2) {
+        int x1 = (int) ((noktalar[1][0]*100))/2;
+        int y1 = (int) ((noktalar[1][1]*100))/2; 
+        drawArc(son_nokta_x1,son_nokta_y1,g,0);
+        drawArc(x1,y1,g,1);
+        son_nokta_x1=x1;
+        son_nokta_y1=y1;}
+        
+        if(noktalar.length>=3) {
+        int x2 = (int) ((noktalar[2][0]*100))/2;
+        int y2 = (int) ((noktalar[2][1]*100))/2; 
+        drawArc(son_nokta_x2,son_nokta_y2,g,0);
+        drawArc(x2,y2,g,1);
+        son_nokta_x2=x2;
+        son_nokta_y2=y2;}
+        
+        if(noktalar.length>=4) {
+        int x3 = (int) ((noktalar[3][0]*100))/2;
+        int y3 = (int) ((noktalar[3][1]*100))/2; 
+        drawArc(son_nokta_x3,son_nokta_y3,g,0);
+        drawArc(x3,y3,g,1);
+        son_nokta_x3=x3;
+        son_nokta_y3=y3;}
+        
+        if(noktalar.length>=5) {
+        int x4 = (int) ((noktalar[4][0]*100))/2;
+        int y4 = (int) ((noktalar[4][1]*100))/2; 
+        drawArc(son_nokta_x4,son_nokta_y4,g,0);
+        drawArc(x4,y4,g,1);
+        son_nokta_x4=x4;
+        son_nokta_y4=y4;}
+        
+        if(noktalar.length>=6) {
+        int x5 = (int) ((noktalar[5][0]*100))/2;
+        int y5 = (int) ((noktalar[5][1]*100))/2; 
+        drawArc(son_nokta_x5,son_nokta_y5,g,0);
+        drawArc(x5,y5,g,1);
+        son_nokta_x5=x5;
+        son_nokta_y5=y5;}
+        
+        if(noktalar.length>=7) {
+        int x6 = (int) ((noktalar[6][0]*100))/2;
+        int y6 = (int) ((noktalar[6][1]*100))/2; 
+        drawArc(son_nokta_x6,son_nokta_y6,g,0);
+        drawArc(x6,y6,g,1);
+        son_nokta_x1=x6;
+        son_nokta_y1=y6;}
+       
+        if(noktalar.length>=8) {
+        int x7 = (int) ((noktalar[7][0]*100))/2;
+        int y7 = (int) ((noktalar[7][1]*100))/2; 
+        drawArc(son_nokta_x7,son_nokta_y7,g,0);
+        drawArc(x7,y7,g,1);
+        son_nokta_x7=x7;
+        son_nokta_y7=y7;}
+        
+        if(noktalar.length>=9) {
+        int x8 = (int) ((noktalar[8][0]*100))/2;
+        int y8 = (int) ((noktalar[8][1]*100))/2; 
+        drawArc(son_nokta_x8,son_nokta_y8,g,0);
+        drawArc(x8,y8,g,1);
+        son_nokta_x8=x8;
+        son_nokta_y8=y8;}
+        
+        
+        		
+        		
+        
+       		
+        
+           
+ 
+        g.dispose();
+        view.repaint();
+    }
+
+    public static void main(String[] args)
+    {random_deger_ata();
+    
+        MyCanvas canvas = new MyCanvas();
+        JFrame frame = new JFrame();
+        int vertexes = 0;
+        // Change this next part later to be dynamic.
+        vertexes = 10;
+        int canvasSize = vertexes * vertexes;
+        frame.setSize(canvasSize, canvasSize);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(canvas.view);
+        frame.pack();
+        frame.setLocationByPlatform(true);
+        frame.setVisible(true);
+    }
+
+    public void drawNode(int x, int y, Graphics g,int a)
+    {
+            // Treat each location as a 10x10 block. If position 1,1 then go to (5,5) - If position 3,5 then go to (25, 45) eg: (x*10)-5, (y*10)-5
+            int xLoc =200+ (x*50);
+            int yLoc =200- (y*50);
+            if(a==1) {
+            g.setColor(Color.white);}
+            else {
+                g.setColor(Color.ORANGE);
+            }
+            g.fillOval(xLoc, yLoc, 8, 8);
+            g.drawOval(xLoc, yLoc, 8, 8);    
+   
+}
+    public void drawArc(int xx, int yy, Graphics g,int a)
+    { 
+    	
+    	int xxLoc =200+ (xx);
+        int yyLoc =200- (yy);
+        if(a==1) {
+        g.setColor(Color.BLACK);}
+        else if(a==2) {
+        g.setColor(Color.PINK);	
+        }
+        else {
+            g.setColor(Color.ORANGE);
+        }
+            g.drawLine(200, 200, xxLoc, yyLoc);
+    }
+    
+    
+    public static void oteleme_degerleri() {
+  	  //A(a,b,c)--> a=a2a1,b=b2b1,c=c2c1;
+  		 N=0;
+  		 while(N<=(nokta_say-1)) {
+  			 	
+  		  while(M<=(nokta_say-1)) {
+  			  if(N==M&&N!=(nokta_say-1)) {//N=M olursa noktalar aynı noktalar olur olmasın
+  					M++;
+  			  }
+  		if(M!=N) { //en sondaki eşitlikten kaçar;(durumu kurtaran çözüm); 
+  		  double a2a1=noktalar[N][0]-noktalar[M][0];//noktalar arası uzaklıkları bulur
+  		  double b2b1=noktalar[N][1]-noktalar[M][1];
+  		  double c2c1=noktalar[N][2]-noktalar[M][2];
+  		  double L_abc2_abc1_karesi=Math.pow(a2a1, 2)+Math.pow(b2b1, 2)+Math.pow(c2c1, 2);
+  		 
+  		//  System.out.println(N+". noktanın"+M+". noktaya uzaklığı:"+L_abc2_abc1_karesi);
+  		 // System.out.println(L_abc2_abc1_karesi);
+  		  
+  		  double oteleme_X=(F*a2a1)/L_abc2_abc1_karesi;
+  	 //System.out.println(oteleme_X);
+  		  double oteleme_Y=(F*b2b1)/L_abc2_abc1_karesi;
+  		  double oteleme_Z=(F*c2c1)/L_abc2_abc1_karesi;	  
+  		  oteleme[N][0]=oteleme[N][0]+oteleme_X;
+  		  oteleme[N][1]=oteleme[N][1]+oteleme_Y;
+  		  oteleme[N][2]=oteleme[N][2]+oteleme_Z;
+  		// System.out.println(M);
+  		   
+  		}M++;	  	
+  		  }
+  		  N++;
+  		  if(N==(nokta_say)) {
+  				N++;
+  			}
+  		  M=0;
+  		 
+  		 }//öteleme tamamlandı	  
+  		  
+  		 
+  		   
+    }
+    public static void otelemeri_ekle() {
+  	  i=0;
+  	  while(i<noktalar.length) {
+  			 noktalar[i][0]=noktalar[i][0]+oteleme[i][0];
+  			 noktalar[i][1]=noktalar[i][1]+oteleme[i][1];
+  			 noktalar[i][2]=noktalar[i][2]+oteleme[i][2];
+  			 i++;
+  			
+  			}
+    }
+    public static void yarıcapa_kucult() {
+  	  ii=0;
+  	  while(ii<noktalar.length) {
+  	  double aa=noktalar[ii][0];
+  	  double bb=noktalar[ii][1];
+  	  double cc=noktalar[ii][2];
+  	  double L=Math.pow(aa, 2)+Math.pow(bb, 2)+Math.pow(cc, 2);
+  	//  System.out.println(aa+" "+bb+" "+cc);
+  	 // System.out.println(R+" "+L);
+  	  noktalar[ii][0]= noktalar[ii][0]*(R/(Math.sqrt(L)));
+  	  noktalar[ii][1]= noktalar[ii][1]*(R/(Math.sqrt(L)));
+  	  noktalar[ii][2]= noktalar[ii][2]*(R/(Math.sqrt(L)));//vektörü yarıçapa küçülttüm;
+  	  ii++;
+  	  }ii=0;
+    }
+    public static void random_deger_ata() {
+  	  Random rnd = new Random();
+  	  int iiii=0;
+  	  while(iiii<noktalar.length) {
+  		
+  	  int aaa = (rnd.nextInt(100) + 1);
+  	  int bbb= (rnd.nextInt(100) + 1);
+  	  int ccc= (rnd.nextInt(100) + 1);
+  	  noktalar[iiii][0]=aaa;
+  	  noktalar[iiii][1]=bbb;
+  	  noktalar[iiii][2]=ccc;
+  	  iiii++;
+  	  }
+  	  noktalar[0][0]=0;
+  			  noktalar[0][1]=0;
+  					  noktalar[0][2]=R;
+    }
+    public static void kordinatları_yaz() {
+  	  if(sayac>sayac_limit) {
+  		  if(F<50) {
+  			  F=F+0.1;
+  		  }
+  		  int iiiiiii=0;
+  		  while(iiiiiii<noktalar.length) {
+  	  System.out.println(noktalar[iiiiiii][0]+" "+noktalar[iiiiiii][1]+" "+noktalar[iiiiiii][2]);
+  	  iiiiiii++;
+
+  		  }
+  	  System.out.println("--------------------  ");
+  	  sayac=0;
+  	  }
+    }
+
+    
+}
